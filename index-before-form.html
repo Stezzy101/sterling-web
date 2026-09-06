@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plainspoken — Simple Websites for Small Businesses</title>
+  <meta name="description" content="Simple websites for small businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Franklin:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#1d1d1b;
+      --paper:#f5f3ee;
+      --white:#fffdfa;
+      --line:#d2ccc2;
+      --muted:#6c6861;
+      --accent:#29473d;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"Inter",Arial,sans-serif;
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+    header{
+      border-bottom:1px solid var(--line);
+      background:rgba(245,243,238,.96);
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(8px)
+    }
+    nav{
+      min-height:72px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px
+    }
+    .brand{
+      font-family:"Libre Franklin",Arial,sans-serif;
+      font-weight:700;text-decoration:none;font-size:18px
+    }
+    .navlinks{display:flex;gap:26px;align-items:center;font-size:13px}
+    .navlinks a{text-decoration:none}
+    .contact-link{
+      border:1px solid var(--ink);
+      padding:9px 13px;
+      transition:.18s ease;
+    }
+    .contact-link:hover{background:var(--ink);color:var(--paper)}
+    .hero{
+      padding:96px 0 56px;
+      border-bottom:0;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.28fr .72fr;
+      gap:70px;
+      align-items:end;
+    }
+    .hero-side{
+      border-top:1px solid var(--line);
+      padding-top:20px;
+    }
+    .hero-side p{
+      margin:0 0 24px;
+      font-size:15px;
+      line-height:1.6;
+      color:var(--muted);
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:34px;
+    }
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 16px;
+      border:1px solid var(--ink);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:600;
+      transition:.18s ease;
+    }
+    .button.primary{background:var(--ink);color:var(--paper)}
+    .button:hover{transform:translateY(-1px)}
+    .client-types{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 16px;
+      margin-top:30px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .client-types span{white-space:nowrap}
+
+    .work-intro{
+      padding:38px 0 0;
+    }
+    .work-strip{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:22px;
+    }
+
+    .work-tile{
+      position:relative;
+      min-height:220px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:var(--white);
+      text-decoration:none;
+      transition:transform .2s ease;
+    }
+
+
+
+
+
+    .work-tile iframe{
+      transition:transform .28s ease;
+    }
+
+    .work-tile:hover iframe{
+      transform:scale(.39);
+    }
+    .work-tile{
+      position:relative;
+      min-height:220px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:var(--white);
+      text-decoration:none;
+      transition:transform .2s ease;
+    }
+    .work-tile iframe{
+      position:absolute;
+      top:0;left:0;
+      width:1200px;
+      height:760px;
+      border:0;
+      transform:scale(.37);
+      transform-origin:top left;
+      pointer-events:none;
+      filter:saturate(.88);
+    }
+    .work-tile-overlay{
+      position:static;
+      background:var(--white);
+      padding:18px 18px 20px;
+      border-top:1px solid var(--line);
+    }
+    .work-tile small{
+      display:block;
+      margin-bottom:5px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:9px;
+    }
+    .work-tile strong{
+      font-family:"Libre Franklin",Arial,sans-serif;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+    .work-tile:hover{
+      transform:translateY(-2px);
+    }
+    .work-tile:hover strong{text-decoration:underline;text-underline-offset:4px}
+    .eyebrow{
+      font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+      color:var(--accent);font-weight:700;margin-bottom:24px
+    }
+    h1,h2,h3{
+      font-family:"Libre Franklin",Arial,sans-serif;
+      line-height:1.03;margin:0;letter-spacing:-.035em
+    }
+    h1{
+      font-size:clamp(58px,7.7vw,101px);
+      max-width:900px
+    }
+    .hero p{
+      margin:26px 0 0;
+      max-width:690px;
+      font-size:19px;
+      color:#54514c
+    }
+    section{padding:92px 0}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px
+    }
+    .section-head h2{font-size:clamp(42px,5vw,68px)}
+    .section-head p{max-width:500px;color:var(--muted)}
+    .projects{
+      display:grid;grid-template-columns:1fr;gap:42px
+    }
+    .project{
+      display:grid;grid-template-columns:1.15fr .85fr;
+      background:var(--white);border:1px solid var(--line)
+    }
+    .project-preview{
+      height:430px;
+      background:var(--white);
+      position:relative;
+      overflow:hidden;
+    }
+    .project-preview img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:top center;
+      display:block;
+      background:#f5f3ee;
+      padding:18px;
+    }
+    .project-copy{
+      padding:44px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .project-num{
+      font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)
+    }
+    .project h3{font-size:38px;margin:22px 0 14px}
+    .project p{color:#5e5a54;max-width:430px}
+    .case-study{
+      margin-top:28px;
+      border-top:1px solid var(--line);
+    }
+    .case-row{
+      display:grid;
+      grid-template-columns:72px 1fr;
+      gap:16px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .case-row span{
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--muted);
+      padding-top:3px;
+    }
+    .case-row p{
+      margin:0;
+      font-size:13px;
+      line-height:1.5;
+      color:#5e5a54;
+    }
+
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+    .tag{
+      border:1px solid var(--line);padding:6px 8px;font-size:11px
+    }
+    .view-link{
+      display:inline-block;margin-top:34px;text-decoration:none;
+      border-bottom:1px solid currentColor;padding-bottom:4px;font-size:13px
+    }
+    .services{
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      background:var(--white)
+    }
+    .services-grid{
+      display:grid;grid-template-columns:.8fr 1.2fr;gap:80px
+    }
+    .services h2{font-size:clamp(42px,5vw,66px)}
+    .service-list{
+      border-top:1px solid var(--line)
+    }
+    .service-row{
+      display:grid;grid-template-columns:1fr auto;
+      padding:20px 0;border-bottom:1px solid var(--line);
+      gap:20px
+    }
+    .service-row span:first-child{font-weight:600}
+    .service-row span:last-child{font-size:12px;color:var(--muted)}
+
+    .process{background:var(--paper);border-bottom:1px solid var(--line)}
+    .process-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:80px}
+    .process h2{font-size:clamp(42px,5vw,66px)}
+    .steps{border-top:1px solid var(--line)}
+    .step{
+      display:grid;grid-template-columns:54px 1fr;gap:18px;
+      padding:24px 0;border-bottom:1px solid var(--line)
+    }
+    .step-num{font-size:11px;color:var(--muted);letter-spacing:.12em}
+    .step strong{display:block;margin-bottom:5px}
+    .step p{margin:0;color:#5e5a54;font-size:14px}
+
+    .about-grid{
+      display:grid;grid-template-columns:.7fr 1.3fr;gap:80px
+    }
+    .about h2{font-size:clamp(42px,5vw,66px)}
+    .about-copy p{font-size:18px;color:#55514c;max-width:700px}
+    .contact{
+      background:var(--accent);color:white
+    }
+    .contact-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:70px
+    }
+    .contact h2{font-size:clamp(48px,6vw,78px)}
+    .contact p{max-width:520px;color:#dde4df}
+    .contact-card{
+      border-top:1px solid rgba(255,255,255,.45);padding-top:22px
+    }
+    .contact-card a{
+      display:block;font-size:20px;text-decoration:none;margin:12px 0
+    }
+    .small{
+      font-size:12px!important;color:#c7d2cc!important;margin-top:22px!important
+    }
+    footer{padding:28px 0 40px}
+    .foot{
+      display:flex;justify-content:space-between;gap:30px;
+      font-size:12px;color:var(--muted)
+    }
+    .concept{
+      border:1px solid var(--line);padding:6px 8px;
+      text-transform:uppercase;letter-spacing:.11em;font-size:9px
+    }
+
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr;gap:38px}
+      .work-strip{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:22px;
+    }
+      .work-strip:hover .work-tile,
+  
+      .work-tile{
+      position:relative;
+      min-height:220px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:var(--white);
+      text-decoration:none;
+      transition:transform .2s ease;
+    }
+      .work-tile iframe{transform:scale(.46)}
+      .project,.services-grid,.process-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .project-preview{height:420px}
+      .project-preview img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:top center;
+      display:block;
+      background:#f5f3ee;
+      padding:18px;
+    }
+      .project-copy{padding:32px}
+      section{padding:74px 0}
+    }
+    @media(max-width:560px){
+      .wrap{padding:0 20px}
+      nav{min-height:66px}
+      .navlinks a:not(.contact-link){display:none}
+      .hero{padding:64px 0 38px}
+      h1{font-size:56px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .button{width:100%}
+      .work-intro{padding-top:24px}
+      .work-tile{
+      position:relative;
+      min-height:220px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:var(--white);
+      text-decoration:none;
+      transition:transform .2s ease;
+    }
+      .work-tile iframe{width:1200px;height:760px;transform:scale(.30)}
+      .section-head{display:block}
+      .section-head p{margin-top:16px}
+      .project-preview{height:310px}
+      .project-preview img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:top center;
+      display:block;
+      background:#f5f3ee;
+      padding:18px;
+    }
+      .project h3{font-size:32px}
+      .foot{flex-direction:column}
+    }
+  </style>
+  <!-- Before publishing: replace contact placeholder with real email/phone/Instagram before publishing. -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=2">
+
+<style id="compact-project-fix">
+
+/* Plainspoken compact project strip */
+.work-strip{
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0,1fr)) !important;
+  gap:14px !important;
+}
+
+.work-tile{
+  position:relative !important;
+  height:220px !important;
+  min-height:220px !important;
+  overflow:hidden !important;
+  display:block !important;
+}
+
+.work-tile img{
+  width:100% !important;
+  height:220px !important;
+  max-height:220px !important;
+  object-fit:cover !important;
+  object-position:top center !important;
+  padding:0 !important;
+  display:block !important;
+}
+
+.work-tile-overlay{
+  position:absolute !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  padding:42px 14px 12px !important;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,253,250,.97) 45%
+  ) !important;
+}
+
+.work-tile:hover{
+  transform:translateY(-2px);
+}
+
+.work-tile:hover img{
+  transform:scale(1.01);
+}
+
+@media(max-width:900px){
+  .work-strip{
+    grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:600px){
+  .work-strip{
+    grid-template-columns:1fr !important;
+  }
+
+  .work-tile,
+  .work-tile img{
+    height:230px !important;
+    min-height:230px !important;
+  }
+}
+
+</style>
+
+
+<style id="mobile-polish">
+
+@media(max-width:600px){
+
+  .hero{
+    padding:54px 0 34px !important;
+  }
+
+  .hero h1{
+    font-size:clamp(52px, 15vw, 68px) !important;
+    line-height:.96 !important;
+    letter-spacing:-.055em !important;
+  }
+
+  .hero p{
+    font-size:18px !important;
+    line-height:1.5 !important;
+  }
+
+  /* this extra information is useful on desktop,
+     but unnecessary on mobile */
+  .hero-side{
+    display:none !important;
+  }
+
+  .client-types{
+    margin-top:22px !important;
+    gap:7px 14px !important;
+  }
+
+  .work-intro{
+    padding-top:20px !important;
+  }
+
+  .work-strip{
+    gap:12px !important;
+  }
+
+  .work-tile,
+  .work-tile img{
+    height:200px !important;
+    min-height:200px !important;
+  }
+
+  .work-tile-overlay{
+    padding:36px 14px 12px !important;
+  }
+
+  .work-tile strong{
+    font-size:17px !important;
+  }
+
+}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#">Plainspoken</a>
+      <div class="navlinks">
+        <a href="#work">Work</a>
+        <a href="#services">What we do</a>
+        <a href="#about">About</a>
+        <a class="contact-link" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Plainspoken · Web design for small business</div>
+        <h1>Simple websites for small businesses.</h1>
+        <p>Clear, useful websites that feel like the business behind them — not another template with a logo dropped on top.</p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#work">See the work</a>
+          <a class="button" href="#contact">Start a project</a>
+        </div>
+
+        <div class="client-types" aria-label="Business types">
+          <span>Trades</span>
+          <span>Beauty & wellness</span>
+          <span>Hospitality</span>
+          <span>Local services</span>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <p><strong>No giant agency process.</strong><br>
+        Just a clear first version, useful feedback, and a site that works properly on a phone.</p>
+        <p>New sites · redesigns · enquiry forms · booking pages</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="work-intro">
+    <div class="wrap">
+      <div class="work-strip">
+        <a class="work-tile" href="projects/southside-plumbing/index.html" target="_blank">
+          <img src="assets/project-previews/southside-plumbing.png" alt="" loading="lazy">
+          <div class="work-tile-overlay">
+            <small>Trade · Concept</small>
+            <strong>Southside Plumbing Co.</strong>
+          </div>
+        </a>
+
+        <a class="work-tile" href="projects/coastline-electrical/index.html" target="_blank">
+          <img src="assets/project-previews/coastline-electrical.png" alt="" loading="lazy">
+          <div class="work-tile-overlay">
+            <small>Trade · Concept</small>
+            <strong>Coastline Electrical</strong>
+          </div>
+        </a>
+
+        <a class="work-tile" href="projects/atelier-skin/index.html" target="_blank">
+          <img src="assets/project-previews/atelier-skin.png" alt="" loading="lazy">
+          <div class="work-tile-overlay">
+            <small>Beauty · Concept</small>
+            <strong>Atelier Skin</strong>
+          </div>
+        </a>
+
+        <a class="work-tile" href="projects/marlow-cafe/index.html" target="_blank">
+          <img src="assets/project-previews/marlow-cafe.png" alt="" loading="lazy">
+          <div class="work-tile-overlay">
+            <small>Hospitality · Concept</small>
+            <strong>Marlow Café</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Selected work</div>
+          <h2>Built around the business,<br>not around a template.</h2>
+        </div>
+        <p>Independent concept work showing how the same approach can flex across very different small businesses.</p>
+      </div>
+
+      <div class="projects">
+              <article class="project">
+        <div class="project-preview">
+          <img src="assets/project-previews/coastline-electrical.png" alt="" loading="lazy">
+        </div>
+
+        <div class="project-copy">
+          <div>
+            <div class="eyebrow">Project 02</div>
+            <h3>Coastline Electrical</h3>
+            <p>A straightforward electrical website designed to make services, trust and contact details easy to find.</p>
+
+            <div class="case-study">
+              <div class="case-row">
+                <span>Problem</span>
+                <p>Local electrical businesses need to build trust quickly and make urgent enquiries simple.</p>
+              </div>
+
+              <div class="case-row">
+                <span>Approach</span>
+                <p>Clear service hierarchy, practical language and strong contact actions without unnecessary visual clutter.</p>
+              </div>
+
+              <div class="case-row">
+                <span>Goal</span>
+                <p>Help customers understand the service and make contact without friction.</p>
+              </div>
+            </div>
+
+            <div class="tags">
+              <span>Trade</span>
+              <span>Services</span>
+              <span>Enquiries</span>
+            </div>
+          </div>
+
+          <a class="view-link" href="projects/coastline-electrical/index.html" target="_blank">View project</a>
+        </div>
+      </article>
+
+<article class="project">
+          <div class="project-preview">
+            <img src="assets/project-previews/southside-plumbing.png" alt="" loading="lazy">
+          </div>
+          <div class="project-copy">
+            <div>
+              <div class="project-num">Project 01</div>
+              <h3>Southside Plumbing Co.</h3>
+              <p>A local trade website designed around speed, clarity and making it easy to get in touch.</p>
+
+              <div class="case-study">
+                <div class="case-row">
+                  <span>Problem</span>
+                  <p>People needing a plumber usually want answers fast. The site needed to make calling and requesting a quote obvious.</p>
+                </div>
+                <div class="case-row">
+                  <span>Approach</span>
+                  <p>Clear service sections, strong mobile actions, simple language and a short quote form.</p>
+                </div>
+                <div class="case-row">
+                  <span>Goal</span>
+                  <p>Reduce the steps between needing help and contacting the business.</p>
+                </div>
+              </div>
+
+              <div class="tags">
+                <span class="tag">Tradie</span>
+                <span class="tag">Quote form</span>
+                <span class="tag">Mobile-first</span>
+              </div>
+            </div>
+            <a class="view-link" href="projects/southside-plumbing/index.html" target="_blank">View project</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-preview">
+            <img src="assets/project-previews/atelier-skin.png" alt="" loading="lazy">
+          </div>
+          <div class="project-copy">
+            <div>
+              <div class="project-num">Project 02</div>
+              <h3>Atelier Skin</h3>
+              <p>A quieter, more editorial website for a boutique skin studio.</p>
+
+              <div class="case-study">
+                <div class="case-row">
+                  <span>Problem</span>
+                  <p>Beauty websites can easily become cluttered with treatments, products and generic luxury language.</p>
+                </div>
+                <div class="case-row">
+                  <span>Approach</span>
+                  <p>A smaller treatment menu, calmer hierarchy, restrained typography and a simple appointment enquiry flow.</p>
+                </div>
+                <div class="case-row">
+                  <span>Goal</span>
+                  <p>Make the studio feel considered, personal and easy to book.</p>
+                </div>
+              </div>
+
+              <div class="tags">
+                <span class="tag">Beauty</span>
+                <span class="tag">Editorial</span>
+                <span class="tag">Booking enquiry</span>
+              </div>
+            </div>
+            <a class="view-link" href="projects/atelier-skin/index.html" target="_blank">View project</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-preview">
+            <img src="assets/project-previews/marlow-cafe.png" alt="" loading="lazy">
+          </div>
+          <div class="project-copy">
+            <div>
+              <div class="project-num">Project 03</div>
+              <h3>Marlow Café</h3>
+              <p>A warm neighbourhood café website built around the information people actually need.</p>
+
+              <div class="case-study">
+                <div class="case-row">
+                  <span>Problem</span>
+                  <p>Customers want to see the menu, opening hours, location and booking details without searching for them.</p>
+                </div>
+                <div class="case-row">
+                  <span>Approach</span>
+                  <p>Strong food imagery, a short menu preview, clear hours and an uncomplicated table-booking flow.</p>
+                </div>
+                <div class="case-row">
+                  <span>Goal</span>
+                  <p>Help someone decide quickly: yes, this is where I want to go.</p>
+                </div>
+              </div>
+
+              <div class="tags">
+                <span class="tag">Hospitality</span>
+                <span class="tag">Menu</span>
+                <span class="tag">Table booking</span>
+              </div>
+            </div>
+            <a class="view-link" href="projects/marlow-cafe/index.html" target="_blank">View project</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap services-grid">
+      <div>
+        <div class="eyebrow">What we do</div>
+        <h2>Clear websites that do their job.</h2>
+      </div>
+      <div class="service-list">
+        <div class="service-row"><span>New websites</span><span>From scratch</span></div>
+        <div class="service-row"><span>Website redesigns</span><span>Clean up what you already have</span></div>
+        <div class="service-row"><span>Quote & enquiry forms</span><span>Make contact easier</span></div>
+        <div class="service-row"><span>Booking pages</span><span>Simple client flows</span></div>
+        <div class="service-row"><span>Mobile optimisation</span><span>Built for phones first</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="process">
+    <div class="wrap process-grid">
+      <div>
+        <div class="eyebrow">How it works</div>
+        <h2>A simple way to get it done.</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <strong>Show us what you have.</strong>
+            <p>Your current site, Instagram, rough idea or even just the business name.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <strong>We build the first version.</strong>
+            <p>Structure, design and wording first. No unnecessary extras.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <strong>We refine it together.</strong>
+            <p>You tell us what feels right and what doesn’t. We adjust it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <strong>Then it goes live.</strong>
+            <p>Mobile checked, links working and ready for customers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>We build things people can actually use.</h2>
+      </div>
+      <div class="about-copy">
+        <p>We build straightforward websites for small businesses.</p>
+        <p>The aim is simple: make the site feel like the business behind it — not like a template with a logo dropped on top.</p>
+        <p>We keep the process simple: clear communication, a first version you can actually react to, and no unnecessary tech for the sake of it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow" style="color:#d6e0db">Contact</div>
+        <h2>Need a website?</h2>
+        <p>Send us what you’ve got — even if it’s just an old website, an Instagram page, or an idea.</p>
+      </div>
+      <div class="contact-card">
+        <p style="font-size:20px;margin-top:0;color:white">Send through the business name, your current website or Instagram, and what you want the new site to do.</p>
+        <a href="mailto:ecomusicflow@gmail.com">ecomusicflow@gmail.com</a>
+        <p class="small">For now, enquiries for Plainspoken come through this email.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Plainspoken · Simple websites for small businesses</div>
+    <div class="concept">Simple websites for small businesses</div>
+  </div>
+</footer>
+</body>
+</html>
+
+<style>
+.work-tile:hover img{transform:scale(1.015);}
+</style>

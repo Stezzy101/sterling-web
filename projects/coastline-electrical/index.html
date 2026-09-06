@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coastline Electrical — Digital Ad Campaign</title>
+
+<style>
+:root{
+  --ink:#141414;
+  --paper:#f2f0e9;
+  --white:#fffdf8;
+  --yellow:#f0d54a;
+  --line:#c9c5bb;
+  --muted:#6a6862;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,sans-serif;
+  line-height:1.5;
+}
+
+.wrap{
+  width:min(1180px,calc(100% - 48px));
+  margin:auto;
+}
+
+header{
+  padding:76px 0 60px;
+  border-bottom:1px solid var(--line);
+}
+
+.eyebrow{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+h1,h2,h3{
+  margin:0;
+  line-height:.95;
+}
+
+h1{
+  font-size:clamp(64px,9vw,112px);
+  letter-spacing:-.055em;
+  max-width:900px;
+}
+
+.intro{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:end;
+  margin-top:36px;
+}
+
+.intro p{
+  font-size:17px;
+  max-width:580px;
+  margin:0;
+}
+
+.meta{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  border:1px solid var(--line);
+  padding:7px 9px;
+  font-size:10px;
+}
+
+.section{
+  padding:80px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.section-head{
+  display:grid;
+  grid-template-columns:.65fr 1.35fr;
+  gap:60px;
+  margin-bottom:40px;
+}
+
+.section-head h2{
+  font-size:clamp(40px,5vw,64px);
+  letter-spacing:-.04em;
+}
+
+.section-head p{
+  margin:0;
+  color:var(--muted);
+  max-width:650px;
+  font-size:16px;
+}
+
+.ads-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.ad{
+  min-height:520px;
+  background:var(--ink);
+  color:var(--white);
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+}
+
+.ad.yellow{
+  background:var(--yellow);
+  color:var(--ink);
+}
+
+.ad.white{
+  background:var(--white);
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+
+.ad.wide{
+  grid-column:1/-1;
+  min-height:270px;
+}
+
+.logo{
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.ad h3{
+  font-size:clamp(50px,6vw,78px);
+  letter-spacing:-.05em;
+}
+
+.kicker{
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:14px;
+}
+
+.sub{
+  font-size:17px;
+  max-width:360px;
+}
+
+.cta{
+  display:inline-block;
+  width:max-content;
+  padding:11px 14px;
+  border:1px solid currentColor;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-top:18px;
+}
+
+.big-number{
+  font-size:86px;
+  font-weight:700;
+  letter-spacing:-.06em;
+  line-height:.9;
+}
+
+.banner-row{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:22px;
+  margin-top:22px;
+}
+
+.banner{
+  background:var(--ink);
+  color:var(--white);
+  min-height:150px;
+  padding:26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+
+.banner.yellow{
+  background:var(--yellow);
+  color:var(--ink);
+}
+
+.banner strong{
+  font-size:30px;
+  letter-spacing:-.04em;
+}
+
+.case-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+
+.case{
+  min-height:250px;
+  padding:30px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.case-num{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+
+.case h3{
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.case p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.deliverables{
+  display:grid;
+  grid-template-columns:.65fr 1.35fr;
+  gap:60px;
+}
+
+.deliverables h2{
+  font-size:clamp(40px,5vw,64px);
+  letter-spacing:-.04em;
+}
+
+.list{
+  border-top:1px solid var(--line);
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:30px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+
+.row span:last-child{
+  color:var(--muted);
+  font-size:12px;
+}
+
+footer{
+  padding:34px 0 50px;
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  font-size:11px;
+  color:var(--muted);
+}
+
+@media(max-width:800px){
+  .intro,
+  .section-head,
+  .deliverables{
+    grid-template-columns:1fr;
+  }
+
+  .meta{justify-content:flex-start}
+
+  .ads-grid,
+  .banner-row{
+    grid-template-columns:1fr;
+  }
+
+  .ad.wide{grid-column:auto}
+
+  .case-grid{
+    grid-template-columns:1fr;
+  }
+
+  .ad{
+    min-height:430px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+
+    <div class="eyebrow">Plainspoken / Advertising / Concept 02</div>
+
+    <h1>Coastline Electrical.</h1>
+
+    <div class="intro">
+      <p>
+        A digital advertising concept for a fictional local electrician.
+        The campaign is built around urgency, trust and a single clear action:
+        book a local electrician when something needs fixing now.
+      </p>
+
+      <div class="meta">
+        <span class="tag">Trades</span>
+        <span class="tag">Lead generation</span>
+        <span class="tag">Display advertising</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Campaign</div>
+        <h2>Power problem?<br>Sorted today.</h2>
+      </div>
+
+      <p>
+        Service advertising has a different job to do. The viewer should
+        understand the problem, the availability and the next action in seconds.
+        This system uses strong contrast, minimal copy and a direct booking message.
+      </p>
+    </div>
+
+    <div class="ads-grid">
+
+      <div class="ad">
+        <div class="logo">Coastline Electrical</div>
+
+        <div>
+          <div class="kicker">Same-day callouts</div>
+          <h3>Power problem?<br>Sorted today.</h3>
+        </div>
+
+        <div>
+          <div class="sub">Local electricians for urgent residential electrical work.</div>
+          <span class="cta">Book an electrician</span>
+        </div>
+      </div>
+
+      <div class="ad yellow">
+        <div class="logo">Coastline Electrical</div>
+
+        <div>
+          <div class="big-number">Today.</div>
+          <h3>Need an<br>electrician?</h3>
+        </div>
+
+        <div>
+          <div class="sub">Same-day local callouts when availability allows.</div>
+          <span class="cta">Request a booking</span>
+        </div>
+      </div>
+
+      <div class="ad wide white">
+        <div class="logo">Coastline Electrical</div>
+
+        <div>
+          <div class="kicker">Local electrical callouts</div>
+          <h3>Need it fixed today?</h3>
+          <div class="sub">Request a same-day electrician.</div>
+        </div>
+
+        <span class="cta">Book now</span>
+      </div>
+
+    </div>
+
+    <div class="banner-row">
+
+      <div class="banner">
+        <strong>Power problem? Sorted today.</strong>
+        <div>Local electrical callouts</div>
+        <span class="cta">Book now</span>
+      </div>
+
+      <div class="banner yellow">
+        <strong>Same-day</strong>
+        <div>Request a local electrician</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Thinking</div>
+        <h2>Clear beats clever.</h2>
+      </div>
+
+      <p>
+        For an urgent local service, the campaign should not make the customer
+        work to understand what is being offered. The creative stays simple,
+        high-contrast and action-focused while still giving the business a recognisable visual identity.
+      </p>
+    </div>
+
+    <div class="case-grid">
+
+      <div class="case">
+        <div class="case-num">01 / Brief</div>
+        <h3>Generate local enquiries.</h3>
+        <p>
+          Promote same-day electrical callouts and turn ad views into booking requests.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-num">02 / Message</div>
+        <h3>Lead with the problem.</h3>
+        <p>
+          Use language that mirrors the customer's immediate need instead of generic brand messaging.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-num">03 / System</div>
+        <h3>Make the CTA obvious.</h3>
+        <p>
+          Keep every format centred on one next step: request or book an electrician.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap deliverables">
+
+    <div>
+      <div class="eyebrow">Deliverables</div>
+      <h2>Built for local lead generation.</h2>
+    </div>
+
+    <div class="list">
+
+      <div class="row">
+        <span>Square campaign creative</span>
+        <span>1080 × 1080</span>
+      </div>
+
+      <div class="row">
+        <span>Horizontal display creative</span>
+        <span>1200 × 628</span>
+      </div>
+
+      <div class="row">
+        <span>Medium rectangle display ad</span>
+        <span>300 × 250</span>
+      </div>
+
+      <div class="row">
+        <span>Leaderboard banner</span>
+        <span>728 × 90</span>
+      </div>
+
+      <div class="row">
+        <span>Tall display creative</span>
+        <span>300 × 600</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <div>Plainspoken — Digital Ad Creative</div>
+    <div>Concept project</div>
+  </footer>
+</div>
+
+</body>
+</html>

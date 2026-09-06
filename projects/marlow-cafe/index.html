@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marlow Café — Cronulla</title>
+  <meta name="description" content="Breakfast, lunch and coffee in Cronulla." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#20201d;
+      --cream:#f3efe7;
+      --paper:#faf7f1;
+      --tomato:#a9472d;
+      --olive:#5d6248;
+      --line:#cfc6b8;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Inter",Arial,sans-serif;
+      background:var(--cream);
+      color:var(--ink);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+    header{
+      position:absolute;top:0;left:0;right:0;z-index:10;color:white
+    }
+    nav{
+      min-height:82px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:1px solid rgba(255,255,255,.32)
+    }
+    .brand{
+      font-family:"Newsreader",Georgia,serif;
+      font-size:31px;text-decoration:none
+    }
+    .navlinks{display:flex;gap:28px;font-size:13px;align-items:center}
+    .navlinks a{text-decoration:none}
+    .hero{
+      min-height:780px;
+      color:white;
+      display:flex;align-items:flex-end;
+      background:
+        linear-gradient(180deg,rgba(20,18,15,.12),rgba(20,18,15,.55)),
+        url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=88&w=2000') center/cover no-repeat;
+    }
+    .hero-content{padding-bottom:72px;width:100%}
+    .eyebrow{
+      text-transform:uppercase;letter-spacing:.17em;font-size:11px;margin-bottom:18px
+    }
+    h1,h2,h3{
+      font-family:"Newsreader",Georgia,serif;
+      line-height:1.02;margin:0;font-weight:600
+    }
+    h1{font-size:clamp(62px,8vw,112px);max-width:830px}
+    .hero p{font-size:18px;max-width:450px;margin:22px 0 26px;color:rgba(255,255,255,.9)}
+    .link{
+      display:inline-block;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px;font-size:13px
+    }
+    .hours-strip{
+      border-bottom:1px solid var(--line);background:var(--paper)
+    }
+    .hours-grid{
+      min-height:90px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:20px;align-items:center
+    }
+    .hours-grid div:not(:first-child){border-left:1px solid var(--line);padding-left:22px}
+    .hours-grid strong{font-size:15px}
+    .hours-grid span{display:block;font-size:12px;color:#68645d}
+    section{padding:100px 0}
+    .intro{
+      display:grid;grid-template-columns:.72fr 1.28fr;gap:80px
+    }
+    .label{font-size:11px;text-transform:uppercase;letter-spacing:.17em;color:#6d675f}
+    .intro h2{font-size:clamp(48px,6vw,78px);max-width:800px}
+    .intro p{font-size:17px;color:#5c5750;max-width:650px}
+    .menu{
+      background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+    }
+    .menu-top{
+      display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:46px
+    }
+    .menu h2{font-size:clamp(48px,5vw,70px)}
+    .menu-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:54px 70px
+    }
+    .menu-section h3{font-size:30px;margin-bottom:18px}
+    .item{
+      display:grid;grid-template-columns:1fr auto;gap:20px;
+      padding:14px 0;border-bottom:1px solid var(--line)
+    }
+    .item strong{font-size:15px}
+    .item p{margin:4px 0 0;font-size:12px;color:#777067}
+    .price{font-size:13px}
+    .feature{
+      display:grid;grid-template-columns:1.05fr .95fr;padding:0;min-height:680px
+    }
+    .feature-image{
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.12)),
+        url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=88&w=1600') center/cover no-repeat;
+    }
+    .feature-copy{
+      background:var(--olive);color:white;padding:90px;
+      display:flex;justify-content:center;flex-direction:column
+    }
+    .feature-copy h2{font-size:clamp(48px,5vw,76px);max-width:600px}
+    .feature-copy p{font-size:17px;max-width:500px;color:#ebe8df}
+    .location{
+      display:grid;grid-template-columns:.72fr 1.28fr;gap:80px
+    }
+    .location h2{font-size:clamp(48px,5vw,72px)}
+    .location p{color:#5d5851;max-width:560px}
+    .address{
+      margin-top:32px;padding-top:22px;border-top:1px solid var(--line);
+      font-size:18px
+    }
+    .booking{
+      background:var(--tomato);color:white
+    }
+    .booking-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:80px
+    }
+    .booking h2{font-size:clamp(48px,5vw,76px)}
+    .booking p{max-width:500px;color:#f1ddd5}
+    .booking form{border-top:1px solid rgba(255,255,255,.45);padding-top:22px}
+    .field{margin-bottom:18px}
+    label{
+      display:block;font-size:10px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:7px
+    }
+    input,select,textarea{
+      width:100%;background:transparent;color:white;border:0;border-bottom:1px solid rgba(255,255,255,.45);
+      padding:12px 0;font:inherit;outline:none
+    }
+    input::placeholder,textarea::placeholder{color:#efd2c7}
+    select option{color:var(--ink)}
+    button{
+      margin-top:12px;background:white;color:var(--tomato);border:0;padding:14px 22px;
+      font:inherit;font-size:13px;font-weight:600;cursor:pointer
+    }
+    .status{display:none;margin-top:16px;font-size:13px}
+    .status.show{display:block}
+    footer{padding:34px 0 48px}
+    .foot{display:flex;justify-content:space-between;gap:30px;font-size:12px;color:#6e685f}
+    .concept{border:1px solid var(--line);padding:6px 8px;text-transform:uppercase;letter-spacing:.11em;font-size:9px}
+    @media(max-width:850px){
+      .intro,.location,.booking-grid,.feature{grid-template-columns:1fr}
+      .feature-image{min-height:500px}
+      .feature-copy{padding:60px 30px}
+      .menu-grid{grid-template-columns:1fr}
+      .hours-grid{grid-template-columns:1fr 1fr;padding:22px 0}
+      .hours-grid div:not(:first-child){border-left:0;padding-left:0}
+      .navlinks a:not(:last-child){display:none}
+      section{padding:76px 0}
+    }
+    @media(max-width:520px){
+      .wrap{padding:0 20px}
+      nav{min-height:72px}
+      .brand{font-size:26px}
+      .hero{min-height:690px}
+      h1{font-size:66px}
+      .hours-grid{grid-template-columns:1fr}
+      .menu-top{display:block}
+      .menu-top .link{margin-top:20px}
+      .feature-image{min-height:410px}
+      .foot{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#">Marlow Café</a>
+      <div class="navlinks">
+        <a href="#menu">Menu</a>
+        <a href="#location">Find us</a>
+        <a href="#booking">Book a table</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-content">
+      <div class="eyebrow">Cronulla · every day</div>
+      <h1>Breakfast, lunch, coffee.</h1>
+      <p>A neighbourhood café for long breakfasts, quick coffees and the kind of lunches that accidentally run into the afternoon.</p>
+      <a class="link" href="#menu">See the menu</a>
+    </div>
+  </section>
+
+  <div class="hours-strip">
+    <div class="wrap hours-grid">
+      <div><strong>Marlow Café</strong><span>Neighbourhood café · Cronulla</span></div>
+      <div><strong>Mon–Fri</strong><span>6:30am–3pm</span></div>
+      <div><strong>Sat–Sun</strong><span>7am–3pm</span></div>
+      <div><strong>Kitchen</strong><span>until 2:30pm</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap intro">
+      <div class="label">About Marlow</div>
+      <div>
+        <h2>Good food, properly made. Nothing too complicated.</h2>
+        <p>Marlow is the sort of place we wanted in our own neighbourhood: good coffee, a short menu, produce we actually like, and a room you can sit in without being rushed out the door.</p>
+        <p>Come for ten minutes or stay for two hours. Both are completely fine.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <div class="menu-top">
+        <div>
+          <div class="label">Menu</div>
+          <h2>A few favourites.</h2>
+        </div>
+        <a class="link" href="#booking">Book a table</a>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-section">
+          <h3>Breakfast</h3>
+          <div class="item">
+            <div><strong>Eggs on sourdough</strong><p>Poached, scrambled or fried · cultured butter</p></div><div class="price">$17</div>
+          </div>
+          <div class="item">
+            <div><strong>Ricotta toast</strong><p>Honey, seasonal fruit, toasted seeds</p></div><div class="price">$19</div>
+          </div>
+          <div class="item">
+            <div><strong>Breakfast plate</strong><p>Eggs, roast tomato, greens, hash brown, sourdough</p></div><div class="price">$26</div>
+          </div>
+        </div>
+
+        <div class="menu-section">
+          <h3>Lunch</h3>
+          <div class="item">
+            <div><strong>Chicken schnitzel roll</strong><p>Slaw, pickles, herb mayo</p></div><div class="price">$22</div>
+          </div>
+          <div class="item">
+            <div><strong>Roast pumpkin salad</strong><p>Leaves, feta, grains, lemon dressing</p></div><div class="price">$21</div>
+          </div>
+          <div class="item">
+            <div><strong>Steak sandwich</strong><p>Onion, rocket, mustard, fries</p></div><div class="price">$28</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="feature-image" role="img" aria-label="Cafe food and table"></div>
+    <div class="feature-copy">
+      <div class="eyebrow">A local kind of place</div>
+      <h2>Come hungry. Stay longer than you meant to.</h2>
+      <p>Morning coffee, breakfast after the beach, lunch with a friend, or a table in the corner when you need to get out of the house.</p>
+      <p>That’s pretty much the idea.</p>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="wrap location">
+      <div class="label">Find us</div>
+      <div>
+        <h2>Right in Cronulla.</h2>
+        <p>This is a fictional concept address for the portfolio demo. A real client site would include their map, parking notes and transport details.</p>
+        <div class="address">
+          12 Ocean Street, Cronulla NSW 2230<br>
+          hello@marlowcafe.com.au<br>
+          02 9000 0000
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <div class="wrap booking-grid">
+      <div>
+        <div class="eyebrow">Bookings</div>
+        <h2>Save a table.</h2>
+        <p>Walk-ins are always welcome. For weekends or groups, booking ahead makes life easier.</p>
+      </div>
+      <form id="bookingForm">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" required>
+        </div>
+        <div class="field">
+          <label for="people">People</label>
+          <select id="people">
+            <option>2 people</option>
+            <option>3 people</option>
+            <option>4 people</option>
+            <option>5 people</option>
+            <option>6+ people</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="date">Date</label>
+          <input id="date" type="date" required>
+        </div>
+        <div class="field">
+          <label for="note">Anything we should know?</label>
+          <textarea id="note" placeholder="High chair, larger group, accessibility..."></textarea>
+        </div>
+        <button type="submit">Request a table</button>
+        <div class="status" id="status">Thanks — this is a demo booking form, so nothing has actually been sent.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>Marlow Café · Cronulla · Demo details only</div>
+    <div class="concept">Concept project — not a real business</div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('bookingForm');
+  const status = document.getElementById('status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    status.classList.add('show');
+  });
+</script>
+</body>
+</html>

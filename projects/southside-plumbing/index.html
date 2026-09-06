@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Southside Plumbing Co. — Cronulla & Sutherland Shire</title>
+  <meta name="description" content="Local plumbing across Cronulla and the Sutherland Shire. Leaks, blocked drains, hot water, repairs and general plumbing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Roboto+Slab:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#20231f;
+      --paper:#f1eee7;
+      --paper2:#e4ded3;
+      --green:#304650;
+      --rust:#b95b36;
+      --line:#c9c2b7;
+      --white:#fffdf8;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:"Archivo", Arial, sans-serif;
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+    header{
+      border-bottom:1px solid var(--line);
+      background:rgba(243,240,232,.96);
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(8px)
+    }
+    nav{
+      min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px
+    }
+    .brand{
+      font-family:"Archivo", Arial, sans-serif;
+      font-size:19px;font-weight:500;letter-spacing:-.025em;text-decoration:none
+    }
+    .brand strong{font-weight:800}
+    .brand span{display:block;font-family:"Archivo";font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-top:2px}
+    .navlinks{display:flex;align-items:center;gap:24px;font-size:14px}
+    .navlinks a{text-decoration:none}
+    .phone{font-weight:700}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:48px;padding:0 18px;border:1px solid var(--ink);
+      text-decoration:none;font-weight:700;font-size:14px;border-radius:3px;
+      transition:.18s ease
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.dark{background:var(--ink);color:var(--white)}
+    .btn.rust{background:var(--rust);border-color:var(--rust);color:white}
+    .hero{
+      display:grid;grid-template-columns:1.06fr .94fr;min-height:610px;border-bottom:1px solid var(--line)
+    }
+    .hero-copy{padding:82px 54px 72px max(28px,calc((100vw - 1180px)/2 + 28px))}
+    .eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:.16em;font-weight:700;color:var(--green);margin-bottom:22px}
+    h1,h2,h3{font-family:"Roboto Slab", Georgia, serif;letter-spacing:-.035em;line-height:1.03;margin:0}
+    h1{font-size:clamp(46px,5.8vw,76px);max-width:720px}
+    .hero p{font-size:20px;max-width:620px;margin:28px 0 34px;color:#4b4b46}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .micro{font-size:12px;margin-top:16px!important;color:#69675f!important}
+    .hero-image{
+      position:relative;min-height:520px;
+      background:
+        linear-gradient(180deg,rgba(20,25,22,.05),rgba(20,25,22,.22)),
+        url('https://plus.unsplash.com/premium_photo-1750594941294-91dcf3896ad5?auto=format&fit=crop&fm=jpg&q=80&w=1800') center 42%/cover no-repeat;
+    }
+    .image-note{
+      position:absolute;right:22px;bottom:22px;background:var(--paper);padding:10px 12px;
+      font-size:11px;max-width:210px;border:1px solid rgba(0,0,0,.12)
+    }
+    .trust{border-bottom:1px solid var(--line)}
+    .trust .wrap{
+      min-height:90px;display:grid;grid-template-columns:1.25fr repeat(3,1fr);
+      align-items:center;gap:22px
+    }
+    .trust strong{font-size:18px}
+    .trust span{font-size:13px;border-left:1px solid var(--line);padding-left:20px}
+    section{padding:100px 0}
+    .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}
+    .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--green)}
+    h2{font-size:clamp(40px,5vw,67px)}
+    .about-copy p{font-size:18px;color:#4b4b46;max-width:700px}
+    .signature{margin-top:32px;border-top:1px solid var(--line);padding-top:24px;display:flex;gap:14px;align-items:center}
+    .avatar{width:46px;height:46px;border-radius:50%;background:var(--green);color:white;display:grid;place-items:center;font-weight:700}
+    .signature strong{display:block}
+    .signature span{font-size:13px;color:#66635b}
+    .services{background:var(--green);color:var(--white)}
+    .services .kicker{color:#d9d0c2}
+    .services-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:54px}
+    .services-head p{max-width:420px;color:#d8d4ca}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.28);border-left:1px solid rgba(255,255,255,.28)}
+    .service{
+      min-height:235px;padding:30px;border-right:1px solid rgba(255,255,255,.28);border-bottom:1px solid rgba(255,255,255,.28)
+    }
+    .service .num{font-size:11px;letter-spacing:.15em;color:#d9d0c2}
+    .service h3{font-size:26px;margin:45px 0 14px}
+    .service p{font-size:14px;color:#d8d4ca;margin:0}
+    .send-photo{
+      margin-top:26px;display:inline-block;color:white;text-underline-offset:4px;font-weight:700
+    }
+    .reviews .intro{max-width:680px;margin-bottom:52px}
+    .reviews .intro p{color:#5c5952}
+    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .review{background:var(--white);padding:30px;min-height:240px;border:1px solid var(--line)}
+    .review p{font-family:"Roboto Slab";font-size:22px;line-height:1.35;margin:0 0 30px}
+    .review small{text-transform:uppercase;letter-spacing:.12em;color:#77736b}
+    .areas{background:var(--paper2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .area-list{font-family:"Roboto Slab";font-size:clamp(28px,4vw,48px);line-height:1.35;margin:36px 0}
+    .cta{padding:110px 0}
+    .cta-box{
+      background:var(--rust);color:white;padding:62px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end
+    }
+    .cta h2{max-width:650px}
+    .cta p{font-size:18px;max-width:620px}
+    .cta .btn{border-color:white;color:white}
+
+    .quote-section{padding:100px 0;background:var(--white);border-top:1px solid var(--line)}
+    .quote-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:70px;align-items:start}
+    .quote-copy p{font-size:17px;color:#5b5851;max-width:460px}
+    .quote-copy .small-note{font-size:12px;color:#77736b;margin-top:24px}
+    .quote-form{
+      background:var(--paper);border:1px solid var(--line);padding:34px
+    }
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+    input,textarea,select{
+      width:100%;border:1px solid #aaa398;background:var(--white);
+      color:var(--ink);padding:14px 14px;font:inherit;border-radius:2px;outline:none
+    }
+    input:focus,textarea:focus,select:focus{border-color:var(--green)}
+    textarea{min-height:140px;resize:vertical}
+    input[type="file"]{padding:11px}
+    .form-help{font-size:12px;color:#716d65;margin-top:-2px}
+    .form-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+    .form-status{
+      display:none;margin-top:18px;padding:15px 16px;background:#e4eadf;border:1px solid #abb8a3;
+      font-size:14px
+    }
+    .form-status.show{display:block}
+
+    footer{border-top:1px solid var(--line);padding:34px 0 50px}
+    .foot{display:flex;justify-content:space-between;gap:30px;font-size:12px;color:#66635b}
+    .concept{border:1px solid var(--line);padding:7px 9px;text-transform:uppercase;letter-spacing:.12em;font-size:10px}
+    @media(max-width:860px){
+      .navlinks a:not(.phone):not(.btn){display:none}
+      .hero{grid-template-columns:1fr}
+      .hero-copy{padding:74px 28px 58px}
+      .hero-image{min-height:420px}
+      .trust .wrap{grid-template-columns:1fr 1fr;padding:22px 28px}
+      .trust span{border-left:0;padding-left:0}
+      .split,.services-head,.cta-box,.quote-layout{grid-template-columns:1fr;display:grid;gap:34px}
+      .service-grid,.review-grid{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
+      section{padding:72px 0}
+      .cta-box{padding:38px 28px}
+      .foot{flex-direction:column}
+    }
+    @media(max-width:520px){
+      .wrap{padding:0 20px}
+      nav{min-height:66px}
+      .brand{font-size:17px}
+      .navlinks{gap:10px}
+      .navlinks .phone{display:none}
+      h1{font-size:48px}
+      .hero-copy{padding:56px 20px 44px}
+      .hero p{font-size:18px}
+      .trust .wrap{grid-template-columns:1fr}
+      .trust strong{margin-bottom:4px}
+      .review p{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#"><strong>Southside</strong> Plumbing Co.<span>Cronulla · Sutherland Shire</span></a>
+      <div class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a class="phone" href="tel:0412000000">0412 000 000</a>
+        <a class="btn dark" href="#quote-form">Get a quote</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Local plumber · Cronulla</div>
+      <h1>Plumbing sorted. No mucking around.</h1>
+      <p>Leaks, blocked drains, hot water and the everyday plumbing jobs that need sorting across Cronulla and the Sutherland Shire.</p>
+      <div class="hero-actions">
+        <a class="btn rust" href="tel:0412000000">Call 0412 000 000</a>
+        <a class="btn" href="#quote-form">Get a quote</a>
+      </div>
+      <p class="micro">Usually on the tools. If we miss your call, leave a message or send a text and we'll get back to you.<br>NSW licence no. 000000C · Demo details only</p>
+    </div>
+    <div class="hero-image" role="img" aria-label="Work van with tools">
+      <div class="image-note">Concept project · image placeholder</div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="wrap">
+      <strong>Local. Licensed. Straightforward.</strong>
+      <span>Same-day help where possible</span>
+      <span>Upfront about the work</span>
+      <span>Clean, tidy jobs</span>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap split">
+      <div>
+        <div class="kicker">About Southside</div>
+      </div>
+      <div class="about-copy">
+        <h2>Local plumbing, done properly.</h2>
+        <p>Southside Plumbing Co. is a small local plumbing business servicing Cronulla and the wider Sutherland Shire.</p>
+        <p>We handle everything from the annoying little jobs you've been putting off to urgent leaks, blocked drains and hot water problems.</p>
+        <p>You deal directly with the plumber doing the work. No call centre, no unnecessary runaround.</p>
+        <p>If we can fix it on the spot, we will. If it needs something more, we'll tell you clearly what's involved before going ahead.</p>
+        <div class="signature">
+          <div class="avatar">ST</div>
+          <div><strong>Sam Turner</strong><span>Owner & plumber · Southside Plumbing Co.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="services-head">
+        <div>
+          <div class="kicker">What we do</div>
+          <h2>Most plumbing jobs.<br>No drama.</h2>
+        </div>
+        <p>From a tap that's been dripping for six months to a drain that decides to stop working on Saturday morning.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service"><div class="num">01</div><h3>Blocked drains</h3><p>Slow sinks, overflowing drains and stubborn blockages.</p></article>
+        <article class="service"><div class="num">02</div><h3>Leaks & repairs</h3><p>Dripping taps, burst pipes, toilets, showers and everyday fixes.</p></article>
+        <article class="service"><div class="num">03</div><h3>Hot water</h3><p>Repairs, replacements and figuring out why the shower's suddenly cold.</p></article>
+        <article class="service"><div class="num">04</div><h3>Bathroom plumbing</h3><p>Fixtures, renovations, toilets, basins and tapware.</p></article>
+        <article class="service"><div class="num">05</div><h3>Emergency plumbing</h3><p>For the things that really can't wait until next week.</p></article>
+        <article class="service"><div class="num">06</div><h3>General plumbing</h3><p>Not sure what the job is called? That's fine. Tell us what's happening.</p></article>
+      </div>
+      <a class="send-photo" href="#quote">Not sure what you need? Send us a photo →</a>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="wrap">
+      <div class="intro">
+        <div class="kicker">What customers say</div>
+        <h2>Good work. Easy to deal with.</h2>
+        <p>These are sample reviews for the concept only — on a live client site we'd use verified customer reviews.</p>
+      </div>
+      <div class="review-grid">
+        <div class="review"><p>“Turned up when he said he would, fixed the leak quickly and left everything tidy.”</p><small>Sample review</small></div>
+        <div class="review"><p>“Really easy to deal with and explained what was actually wrong before doing anything.”</p><small>Sample review</small></div>
+        <div class="review"><p>“Helped us out with a blocked drain on short notice. Would definitely use again.”</p><small>Sample review</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="areas">
+    <div class="wrap split">
+      <div><div class="kicker">Where we work</div></div>
+      <div>
+        <h2>Based in Cronulla.<br>Working across the Shire.</h2>
+        <div class="area-list">Cronulla · Caringbah · Woolooware · Miranda · Gymea · Sylvania · Engadine · nearby suburbs</div>
+        <p>Not sure if we come to you? Give us a call.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="quote-section" id="quote-form">
+    <div class="wrap quote-layout">
+      <div class="quote-copy">
+        <div class="kicker">Get a quote</div>
+        <h2>Tell us what’s going on.</h2>
+        <p>You don’t need to know the plumbing term for it. Tell us what you can see, where you are, and when you need help.</p>
+        <p>If it’s easier, add a photo. That can save a lot of back-and-forth.</p>
+        <p class="small-note">Demo form only — it doesn’t send anywhere yet. On a real client site we’d connect this to their email, CRM or booking system.</p>
+      </div>
+
+      <form class="quote-form" id="plumbingQuoteForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="suburb">Suburb</label>
+            <input id="suburb" name="suburb" autocomplete="address-level2" placeholder="e.g. Cronulla" required>
+          </div>
+          <div class="field">
+            <label for="urgency">When do you need help?</label>
+            <select id="urgency" name="urgency">
+              <option>As soon as possible</option>
+              <option>Today if possible</option>
+              <option>This week</option>
+              <option>Not urgent</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="job">What’s happening?</label>
+            <textarea id="job" name="job" placeholder="Blocked kitchen sink, leaking tap, no hot water..." required></textarea>
+          </div>
+          <div class="field full">
+            <label for="photo">Add a photo (optional)</label>
+            <input id="photo" name="photo" type="file" accept="image/*">
+            <div class="form-help">A quick phone photo is perfect.</div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn rust" type="submit">Send quote request</button>
+          <a class="phone" href="tel:0412000000">or call 0412 000 000</a>
+        </div>
+        <div class="form-status" id="formStatus">
+          Thanks — we’ve got the details. This is a demo, so nothing has actually been sent.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <div>
+          <div class="kicker" style="color:#f5d8ca">Need help now?</div>
+          <h2>Sometimes it’s easier to just call.</h2>
+          <p>If it’s urgent, give us a ring. If we’re on a job and miss you, leave a message or text.</p>
+        </div>
+        <div>
+          <a class="btn" href="tel:0412000000">0412 000 000</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Southside Plumbing Co. · Demo details only</div>
+    <div class="concept">Concept project — not a real business</div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('plumbingQuoteForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    status.classList.add('show');
+    status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+
+</body>
+</html>

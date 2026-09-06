@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>North & Co. — Digital Ad Campaign</title>
+
+<style>
+:root{
+  --ink:#1c1c19;
+  --paper:#ece7dd;
+  --cream:#f6f1e7;
+  --green:#17372d;
+  --line:#c8c0b4;
+  --muted:#6b665f;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,sans-serif;
+  line-height:1.5;
+}
+
+.wrap{
+  width:min(1180px,calc(100% - 48px));
+  margin:auto;
+}
+
+header{
+  padding:76px 0 60px;
+  border-bottom:1px solid var(--line);
+}
+
+.eyebrow{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+h1,h2,h3{
+  margin:0;
+  font-family:Georgia,serif;
+  font-weight:normal;
+}
+
+h1{
+  font-size:clamp(64px,9vw,116px);
+  line-height:.88;
+  letter-spacing:-.05em;
+}
+
+.intro{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:end;
+  margin-top:36px;
+}
+
+.intro p{
+  font-size:17px;
+  max-width:570px;
+  margin:0;
+}
+
+.meta{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  border:1px solid var(--line);
+  padding:7px 9px;
+  font-size:10px;
+}
+
+.section{
+  padding:80px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.section-head{
+  display:grid;
+  grid-template-columns:.65fr 1.35fr;
+  gap:60px;
+  margin-bottom:40px;
+}
+
+.section-head h2{
+  font-size:clamp(40px,5vw,66px);
+  line-height:.95;
+}
+
+.section-head p{
+  margin:0;
+  color:var(--muted);
+  max-width:650px;
+  font-size:16px;
+}
+
+.ads-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.ad{
+  min-height:520px;
+  padding:42px;
+  background:var(--green);
+  color:var(--cream);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.ad.light{
+  background:var(--cream);
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+
+.ad.wide{
+  grid-column:1/-1;
+  min-height:280px;
+}
+
+.logo{
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:.18em;
+}
+
+.ad h3{
+  font-size:clamp(52px,6vw,82px);
+  line-height:.88;
+  letter-spacing:-.045em;
+}
+
+.offer{
+  font-size:17px;
+}
+
+.price{
+  font-family:Georgia,serif;
+  font-size:78px;
+  line-height:.9;
+  margin-top:14px;
+}
+
+.cta{
+  display:inline-block;
+  width:max-content;
+  border-bottom:1px solid currentColor;
+  padding-bottom:4px;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-top:14px;
+}
+
+.banner-row{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:22px;
+}
+
+.banner{
+  background:var(--green);
+  color:var(--cream);
+  min-height:150px;
+  padding:28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+
+.banner.light{
+  background:var(--cream);
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+
+.banner strong{
+  font-family:Georgia,serif;
+  font-size:32px;
+  font-weight:normal;
+  line-height:1;
+}
+
+.case-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+
+.case{
+  min-height:260px;
+  padding:30px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.case-num{
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+
+.case h3{
+  font-family:Arial,sans-serif;
+  font-size:17px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.case p{
+  margin:0;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.deliverables{
+  display:grid;
+  grid-template-columns:.65fr 1.35fr;
+  gap:60px;
+}
+
+.deliverables h2{
+  font-size:clamp(40px,5vw,64px);
+  line-height:.95;
+}
+
+.list{
+  border-top:1px solid var(--line);
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:30px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+
+.row span:last-child{
+  color:var(--muted);
+  font-size:12px;
+}
+
+footer{
+  padding:34px 0 50px;
+  font-size:11px;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+}
+
+@media(max-width:800px){
+  .intro,
+  .section-head,
+  .deliverables{
+    grid-template-columns:1fr;
+  }
+
+  .meta{justify-content:flex-start}
+
+  .ads-grid,
+  .banner-row{
+    grid-template-columns:1fr;
+  }
+
+  .ad.wide{grid-column:auto}
+
+  .case-grid{
+    grid-template-columns:1fr;
+  }
+
+  .ad{
+    min-height:430px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+
+    <div class="eyebrow">Plainspoken / Advertising / Concept 01</div>
+
+    <h1>North<br>& Co.</h1>
+
+    <div class="intro">
+      <p>
+        A digital advertising concept for a fictional neighbourhood café.
+        The campaign takes one simple morning offer and turns it into a clear,
+        flexible set of creative assets for different digital placements.
+      </p>
+
+      <div class="meta">
+        <span class="tag">Hospitality</span>
+        <span class="tag">Display advertising</span>
+        <span class="tag">Campaign creative</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Campaign</div>
+        <h2>Morning,<br>sorted.</h2>
+      </div>
+
+      <p>
+        The message has to work quickly: coffee, pastry, $9, before 10am.
+        Rather than turning the offer into a loud discount poster, the campaign
+        keeps the café feeling considered while making the promotion immediately clear.
+      </p>
+    </div>
+
+    <div class="ads-grid">
+
+      <div class="ad">
+        <div class="logo">NORTH & CO.</div>
+
+        <h3>Morning,<br>sorted.</h3>
+
+        <div>
+          <div class="offer">Coffee + pastry<br>before 10am</div>
+          <div class="price">$9</div>
+          <span class="cta">Find us</span>
+        </div>
+      </div>
+
+      <div class="ad light">
+        <div class="logo">NORTH & CO.</div>
+
+        <div>
+          <div class="price">$9</div>
+          <h3>Before<br>10am.</h3>
+        </div>
+
+        <div>
+          <div class="offer">Coffee + pastry.<br>Your morning handled.</div>
+          <span class="cta">Find North & Co.</span>
+        </div>
+      </div>
+
+      <div class="ad wide">
+        <div class="logo">NORTH & CO.</div>
+
+        <div>
+          <h3>Morning, sorted.</h3>
+          <div class="offer">Coffee + pastry · $9 before 10am</div>
+        </div>
+
+        <span class="cta">Find us</span>
+      </div>
+
+    </div>
+
+    <div class="banner-row">
+
+      <div class="banner">
+        <strong>Morning, sorted.</strong>
+        <div>$9 coffee + pastry · before 10am</div>
+        <span class="cta">Find us</span>
+      </div>
+
+      <div class="banner light">
+        <strong>$9</strong>
+        <div>Before 10am</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Thinking</div>
+        <h2>Simple on purpose.</h2>
+      </div>
+
+      <p>
+        The goal is not to fill every format with information.
+        It is to make the offer easy to understand, keep the business recognisable
+        and let the same campaign adapt naturally across different placements.
+      </p>
+    </div>
+
+    <div class="case-grid">
+
+      <div class="case">
+        <div class="case-num">01 / Brief</div>
+        <h3>Drive morning visits.</h3>
+        <p>
+          Create a straightforward promotional campaign for the café's
+          quieter early-morning period.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-num">02 / Idea</div>
+        <h3>One message.</h3>
+        <p>
+          Keep the communication centred around one memorable line and
+          one easy-to-understand offer.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-num">03 / System</div>
+        <h3>Built to resize.</h3>
+        <p>
+          Use a simple visual structure that can move from square ads
+          to horizontal banners without losing clarity.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap deliverables">
+
+    <div>
+      <div class="eyebrow">Deliverables</div>
+      <h2>One campaign.<br>Multiple formats.</h2>
+    </div>
+
+    <div class="list">
+
+      <div class="row">
+        <span>Square display creative</span>
+        <span>1080 × 1080</span>
+      </div>
+
+      <div class="row">
+        <span>Horizontal campaign creative</span>
+        <span>1200 × 628</span>
+      </div>
+
+      <div class="row">
+        <span>Medium rectangle display ad</span>
+        <span>300 × 250</span>
+      </div>
+
+      <div class="row">
+        <span>Leaderboard banner</span>
+        <span>728 × 90</span>
+      </div>
+
+      <div class="row">
+        <span>Tall display creative</span>
+        <span>300 × 600</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <div>Plainspoken — Digital Ad Creative</div>
+    <div>Concept project</div>
+  </footer>
+</div>
+
+</body>
+</html>
